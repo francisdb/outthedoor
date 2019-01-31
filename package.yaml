@@ -1,0 +1,71 @@
+name:                outthedoor
+version:             0.1.0.0
+github:              "francisdb/outthedoor"
+license:             MIT
+author:              "Francis De Brabandere"
+maintainer:          "example@example.com"
+copyright:           "2019 Francis De Brabandere"
+
+extra-source-files:
+  - README.md
+  - ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/outthedoor#readme>
+
+dependencies:
+  - base >= 4.7 && < 5
+
+library:
+  default-extensions: OverloadedStrings
+  source-dirs: src
+  dependencies:
+    - hxt
+    - network
+    - network-uri
+    - HTTP
+    - transformers
+    - bytestring
+    - parallel-io
+    - http-conduit
+    - aeson
+    - aeson-pretty
+    - text
+    - yaml
+    - envy
+    - unordered-containers
+
+executables:
+  outthedoor-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - outthedoor
+
+tests:
+  outthedoor-test:
+    default-extensions:
+      - OverloadedStrings
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - outthedoor
+      - hspec
+      - QuickCheck
+      - transformers
+      - aeson
+      - unordered-containers
